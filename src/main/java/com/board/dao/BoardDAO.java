@@ -160,5 +160,25 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 	}
+
+	public int selectNewArticleNO() {
+		int no = 0;
+		try {
+			conn = dataFactory.getConnection();
+			String query = "select ifnull(max(no)+1,1) no from t_board";
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				no = rs.getInt("no");
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return no;
+	}
 	
 }

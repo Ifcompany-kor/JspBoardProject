@@ -1,5 +1,6 @@
 package com.board.service;
 
+import java.io.File;
 import java.util.List;
 
 import com.board.dao.BoardDAO;
@@ -33,6 +34,10 @@ public class BoardService {
 
 	public void removeArticle(int articleNO) {
 		boardDAO.deleteArticle(articleNO);
+	}
+
+	public int selectNewArticleNO() {
+		return boardDAO.selectNewArticleNO();
 	}
 
 }

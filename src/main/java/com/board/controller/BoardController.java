@@ -108,6 +108,7 @@ public class BoardController extends HttpServlet {
 				return;
 			}else if (action.equals("/removeArticle.do")) {
 				int articleNO = Integer.parseInt(request.getParameter("articleNO"));
+				
 				boardService.removeArticle(articleNO);
 				
 				PrintWriter pw = response.getWriter();
@@ -153,7 +154,13 @@ public class BoardController extends HttpServlet {
 						String fileName = fileItem.getName().substring(idx + 1);
 						System.out.println("파일명:" + fileName);
 						articleMap.put(fileItem.getFieldName(), fileName);  //익스플로러에서 업로드 파일의 경로 제거 후 map에 파일명 저장
-						File uploadFile = new File(currentDirPath + "\\" + fileName);
+						
+						int no = boardService.selectNewArticleNO();
+						File folder = new File(currentDirPath+"\\"+no);
+						if(!folder.exists()) {
+							folder.mkdir();
+						}
+						File uploadFile = new File(currentDirPath + "\\" + boardService.selectNewArticleNO() + "\\" +fileName);
 						fileItem.write(uploadFile);
 
 					} // end if

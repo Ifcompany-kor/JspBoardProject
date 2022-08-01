@@ -41,7 +41,7 @@ public class FileDownloadController extends HttpServlet {
 		String articleNO = request.getParameter("articleNO");
 		System.out.println("imageFileName=" + imageFileName);
 		OutputStream out = response.getOutputStream();
-		String path = ARTICLE_IMAGE_REPO + "\\" + imageFileName;
+		String path = ARTICLE_IMAGE_REPO + "\\" + articleNO + "\\" +imageFileName;
 		File imageFile = new File(path);
 
 		response.setHeader("Cache-Control", "no-cache");
