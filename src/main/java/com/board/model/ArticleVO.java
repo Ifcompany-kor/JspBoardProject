@@ -6,45 +6,63 @@ import java.net.URLEncoder;
 import java.sql.Date;
 
 public class ArticleVO {
-	private int no;
+	private int level;
+	private int articleNO;
+	private int parentNO;
 	private String title;
 	private String content;
 	private String imageFileName;
 	private String id;
-	private Date writeData;
+	private Date writeDate;
 	
 	public ArticleVO() {
 		
 	}
 
 
-
-
-	public ArticleVO(int no, String title, String content, String imageFileName, String id, Date writeDate) {
+	public ArticleVO(int level, int articleNO, int parentNO, String title, String content, String imageFileName,
+			String id) {
 		super();
-		this.no = no;
+		this.level = level;
+		this.articleNO = articleNO;
+		this.parentNO = parentNO;
 		this.title = title;
 		this.content = content;
 		this.imageFileName = imageFileName;
 		this.id = id;
-		this.writeData = writeDate;
 	}
 
 
 
 
-	public int getNo() {
-		return no;
+	public int getLevel() {
+		return level;
 	}
 
 
-
-
-	public void setNo(int no) {
-		this.no = no;
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 
+	public int getArticleNO() {
+		return articleNO;
+	}
+
+
+	public void setArticleNO(int articleNO) {
+		this.articleNO = articleNO;
+	}
+
+
+	public int getParentNO() {
+		return parentNO;
+	}
+
+
+	public void setParentNO(int parentNO) {
+		this.parentNO = parentNO;
+	}
 
 
 	public String getTitle() {
@@ -80,7 +98,7 @@ public class ArticleVO {
 	public void setImageFileName(String imageFileName) {
 		try {
 			if(imageFileName!=null && imageFileName.length()!=0) {
-				this.imageFileName = URLEncoder.encode(imageFileName, "UTF-8");  //파일이름에 특수문자가 있을 경우 인코딩합니다.
+				this.imageFileName = URLEncoder.encode(imageFileName, "UTF-8");  //�����̸��� Ư�����ڰ� ���� ��� ���ڵ��մϴ�.
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -96,20 +114,14 @@ public class ArticleVO {
 	}
 
 
-
-
-	public Date getWriteData() {
-		return writeData;
+	public Date getWriteDate() {
+		return writeDate;
 	}
 
 
-
-
-	public void setWriteData(Date writeData) {
-		this.writeData = writeData;
+	public void setWriteDate(Date writeDate) {
+		this.writeDate = writeDate;
 	}
-
-
 	
 	
 	
@@ -117,3 +129,4 @@ public class ArticleVO {
 	
 
 }
+

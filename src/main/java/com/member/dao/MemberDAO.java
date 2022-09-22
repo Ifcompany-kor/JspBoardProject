@@ -13,7 +13,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.member.model.MemberVO;
-
 public class MemberDAO {
 	private DataSource dataFactory;
 	private Connection conn;
@@ -23,7 +22,7 @@ public class MemberDAO {
 		try {
 			Context ctx = new InitialContext();
 			Context envContext = (Context) ctx.lookup("java:/comp/env");
-			dataFactory = (DataSource) envContext.lookup("jdbc/mysql");
+			dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -76,7 +75,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public MemberVO findMember(String _id) {
 		MemberVO memInfo = null;
 		try {
@@ -135,5 +134,4 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
-
 }

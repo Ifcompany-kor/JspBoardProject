@@ -1,4 +1,4 @@
-package com.board.controller;
+package com.common;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 /**
  * Servlet implementation class FileDownloadController
  */
@@ -41,7 +40,7 @@ public class FileDownloadController extends HttpServlet {
 		String articleNO = request.getParameter("articleNO");
 		System.out.println("imageFileName=" + imageFileName);
 		OutputStream out = response.getOutputStream();
-		String path = ARTICLE_IMAGE_REPO + "\\" + articleNO + "\\" +imageFileName;
+		String path = ARTICLE_IMAGE_REPO + "\\" + articleNO + "\\" + imageFileName;
 		File imageFile = new File(path);
 
 		response.setHeader("Cache-Control", "no-cache");
